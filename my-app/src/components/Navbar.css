@@ -1,0 +1,231 @@
+/* ── CSS Variables ─────────────────────────────────────── */
+.navbar.light {
+  --nav-bg: #ffffff;
+  --nav-text: #0d47a1;
+  --nav-hover-bg: #e3f2fd;
+  --nav-active-bg: #e65100;
+  --nav-active-text: #ffffff;
+  --nav-border: #bbdefb;
+  --toggle-bg: #e3f2fd;
+  --toggle-text: #0d47a1;
+  --toggle-hover: #bbdefb;
+  --brand-color: #0d47a1;
+}
+
+.navbar.dark {
+  --nav-bg: #050d1a;
+  --nav-text: #cbd5e1;
+  --nav-hover-bg: #0d2040;
+  --nav-active-bg: #e65100;
+  --nav-active-text: #ffffff;
+  --nav-border: #1e3a5f;
+  --toggle-bg: #0d2040;
+  --toggle-text: #64b5f6;
+  --toggle-hover: #132a52;
+  --brand-color: #64b5f6;
+}
+
+/* ── Navbar Base ───────────────────────────────────────── */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--nav-bg);
+  padding: 0 28px;
+  height: 74px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+  gap: 16px;
+}
+
+.navbar.light {
+  box-shadow: 0 2px 12px rgba(13, 71, 161, 0.1);
+  border-bottom: 2px solid #e3f2fd;
+}
+
+.navbar.dark {
+  background: linear-gradient(90deg, #030a14 0%, #071628 50%, #030a14 100%);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid #0d2040;
+}
+
+/* ── Brand ─────────────────────────────────────────────── */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--brand-color);
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  padding: 2px 6px;
+}
+
+.navbar.dark .brand-logo-wrap {
+  background: transparent;
+  padding: 2px 4px;
+  box-shadow: none;
+}
+
+.brand-logo {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+.brand-name {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-name-main {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.brand-name-sub {
+  font-size: 0.68rem;
+  font-weight: 400;
+  opacity: 0.85;
+  letter-spacing: 0.2px;
+}
+
+/* ── Links ─────────────────────────────────────────────── */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--nav-text);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+}
+
+.nav-btn:hover {
+  background-color: var(--nav-hover-bg);
+  color: var(--nav-text);
+}
+
+.nav-btn.active {
+  background-color: var(--nav-active-bg);
+  color: var(--nav-active-text);
+  font-weight: 700;
+}
+
+/* ── Theme Toggle ──────────────────────────────────────── */
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.15);
+}
+
+.toggle-svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+/* ── Hamburger (mobile) ────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--nav-text);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ── Mobile Responsive ─────────────────────────────────── */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: none;
+    position: absolute;
+    top: 74px;
+    left: 0;
+    right: 0;
+    background-color: var(--nav-bg);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 16px;
+    gap: 4px;
+    border-top: 1px solid var(--nav-border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar-links.open {
+    display: flex;
+  }
+
+  .nav-btn {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+  }
+
+  .brand-name-sub {
+    display: none;
+  }
+
+  .brand-logo {
+    height: 48px;
+  }
+}
