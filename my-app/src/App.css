@@ -1,38 +1,111 @@
+/* ── Body theme classes ────────────────────────────────── */
+body.light-mode {
+  background-color: #f5f6fa;
+  color: #1a1a2e;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ── App wrapper ───────────────────────────────────────── */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* ── Page content area ─────────────────────────────────── */
+.page-content {
+  flex: 1;
+  padding: 0;
+}
+
+/* ── Placeholder page ──────────────────────────────────── */
+.placeholder-page {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: calc(100vh - 74px);
+  padding: 40px 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.placeholder-page.light {
+  background-color: #f5f6fa;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.placeholder-page.dark {
+  background-color: #121212;
+}
+
+.placeholder-card {
+  text-align: center;
+  padding: 48px 56px;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.placeholder-page.light .placeholder-card {
+  background: #ffffff;
+  border: 1px solid #e0e4f0;
+  box-shadow: 0 4px 24px rgba(26, 35, 126, 0.08);
+}
+
+.placeholder-page.dark .placeholder-card {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.placeholder-team {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.placeholder-page.light .placeholder-team {
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+.placeholder-page.dark .placeholder-team {
+  background: #1a2a3a;
+  color: #64b5f6;
+}
+
+.placeholder-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.placeholder-page.light .placeholder-title {
+  color: #0d47a1;
+}
+
+.placeholder-page.dark .placeholder-title {
+  color: #e0e0e0;
+}
+
+.placeholder-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.placeholder-page.light .placeholder-desc {
+  color: #555;
+}
+
+.placeholder-page.dark .placeholder-desc {
+  color: #aaa;
 }
