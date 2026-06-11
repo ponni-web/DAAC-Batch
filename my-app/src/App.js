@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import ContactInquiryForm from './components/ContactInquiryForm';
+import AboutUs from './components/AboutUs';
 
 function App() {
   const [activePage, setActivePage] = useState('home');
@@ -29,6 +30,8 @@ function App() {
 function PageView({ page, darkMode }) {
   if (page === 'contact') {
     return <ContactInquiryForm darkMode={darkMode} />;
+  if (page === 'about') {
+    return <AboutUs darkMode={darkMode} />;
   }
 
   const pages = {
