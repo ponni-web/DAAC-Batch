@@ -1,0 +1,261 @@
+/* --- நேவிகேஷன் பார் ஸ்டைல்கள் (Sticky Navbar) --- */
+.main-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.main-navbar.light {
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.main-navbar.dark {
+  background: #121212;
+  border-bottom: 1px solid #333;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.nav-logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0d47a1;
+}
+
+.main-navbar.dark .nav-logo {
+  color: #64b5f6;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.main-navbar.light .nav-links a {
+  color: #1a1a2e;
+}
+
+.main-navbar.dark .nav-links a {
+  color: #e0e0e0;
+}
+
+.main-navbar.light .nav-links a:hover {
+  color: #0d47a1;
+}
+
+.main-navbar.dark .nav-links a:hover {
+  color: #64b5f6;
+}
+
+
+/* --- டெஸ்டிமோனியல் பகுதி ஸ்டைல்கள் --- */
+.student-testimonials {
+  min-height: 100vh;
+  padding: 120px 20px 56px 20px; /* மெனு பாரின் உயரத்திற்காக padding-top 120px ஆக கூட்டப்பட்டுள்ளது */
+  box-sizing: border-box;
+}
+
+.student-testimonials.light {
+  background: #f5f6fa;
+  color: #1a1a2e;
+}
+
+.student-testimonials.dark {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+.testimonial-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.testimonial-header {
+  max-width: 720px;
+  margin-bottom: 32px;
+}
+
+.testimonial-kicker {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.student-testimonials.light .testimonial-kicker {
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+.student-testimonials.dark .testimonial-kicker {
+  background: #1a2a3a;
+  color: #64b5f6;
+}
+
+.testimonial-header h1 {
+  margin: 18px 0 12px;
+  color: #0d47a1;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+}
+
+.student-testimonials.dark .testimonial-header h1 {
+  color: #64b5f6;
+}
+
+.testimonial-header p {
+  margin: 0;
+  max-width: 620px;
+  color: #555;
+  line-height: 1.7;
+}
+
+.student-testimonials.dark .testimonial-header p {
+  color: #bdbdbd;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+  padding: 26px;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.student-testimonials.light .testimonial-card {
+  background: #ffffff;
+  border: 1px solid #e0e4f0;
+  box-shadow: 0 4px 24px rgba(26, 35, 126, 0.08);
+}
+
+.student-testimonials.dark .testimonial-card {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.testimonial-top-row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+}
+
+.testimonial-rating {
+  min-width: 46px;
+  padding: 6px 10px;
+  border-radius: 18px;
+  background: #ff6f00;
+  color: #fff;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #0d47a1;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 800;
+  box-shadow: 0 0 10px rgba(100, 181, 246, 0.4);
+}
+
+.testimonial-person h2 {
+  margin: 0;
+  color: #2f343c;
+  font-size: 1rem;
+}
+
+.student-testimonials.dark .testimonial-person h2 {
+  color: #ffffff;
+}
+
+.testimonial-course {
+  margin-top: 4px;
+  color: #64b5f6;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-weight: 600;
+}
+
+.student-testimonials.dark .testimonial-course {
+  color: #bdbdbd;
+}
+
+.testimonial-quote {
+  font-style: italic;
+  margin: 14px 0 0 0;
+  padding: 0;
+  color: #333;
+  line-height: 1.7;
+}
+
+.student-testimonials.dark .testimonial-quote {
+  color: #e0e0e0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+@media (max-width: 900px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .student-testimonials {
+    padding: 100px 16px 36px 16px;
+  }
+
+  .testimonial-card {
+    padding: 22px;
+  }
+
+  .testimonial-header h1 {
+    font-size: 2rem;
+  }
+}

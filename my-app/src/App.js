@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import ContactInquiryForm from './components/ContactInquiryForm';
 import AboutUs from './components/AboutUs';
 import InternshipWorkshop from './components/Intenship&Workshop';
+import StudentTestimonial from './components/StudentTestimonial';
+import AdminDashboard from './components/AdminDashboard';
 
 function App() {
   const [activePage, setActivePage] = useState('home');
@@ -38,6 +40,14 @@ function PageView({ page, darkMode }) {
   }
   if (page === 'internship') {
     return <InternshipWorkshop darkMode={darkMode} />;
+
+  }
+  if (page === 'testimonials') {
+    return <StudentTestimonial darkMode={darkMode} />;
+  }
+
+  if (page === 'admin') {
+    return <AdminDashboard darkMode={darkMode} />;
   }
 
   const pages = {
@@ -45,8 +55,8 @@ function PageView({ page, darkMode }) {
     about:        { team: 'Team 2', title: 'About Us Page' },
     courses:      { team: 'Team 3', title: 'Courses Page' },
     testimonials: { team: 'Team 5', title: 'Student Testimonial Section' },
+    contact:      { team: 'Team 4', title: 'Contact & Inquiry Form' },
     internship:   { team: 'Team 6', title: 'Internship & Workshop Page' },
-    admin:        { team: 'Team 7', title: 'Admin Dashboard UI' },
   };
 
   const current = pages[page];
