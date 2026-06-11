@@ -30,6 +30,8 @@ function App() {
 function PageView({ page, darkMode }) {
   if (page === 'contact') {
     return <ContactInquiryForm darkMode={darkMode} />;
+  }
+
   if (page === 'about') {
     return <AboutUs darkMode={darkMode} />;
   }
