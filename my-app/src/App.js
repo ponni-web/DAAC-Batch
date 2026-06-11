@@ -42,6 +42,10 @@ function PageView({ page, darkMode, setActivePage }) {
 
   const current = pages[page];
 
+  if (!current) {
+    return <HomePage darkMode={darkMode} setActivePage={setActivePage} />;
+  }
+
   return (
     <div className={`placeholder-page ${darkMode ? 'dark' : 'light'}`}>
       <div className="placeholder-card">

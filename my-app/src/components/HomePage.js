@@ -17,8 +17,40 @@ function HomePage({ darkMode }) {
     { icon: 'bot', label: 'AI tool practice' },
   ];
 
+  const boardFeatures = [
+    'Live Classes',
+    'Project Help',
+    'Internship Support',
+    'Resume Build',
+    'Interview Prep',
+    'Mini Tasks',
+    'Weekend Batch',
+    'Tamil Guidance',
+    'Doubt Clearing',
+    'Portfolio Setup',
+    'GitHub Basics',
+    'Certificate',
+  ];
+
   return (
     <section className={`home-page ${darkMode ? 'dark' : 'light'}`}>
+      <div className="home-section home-hero">
+        <div className="quick-board" aria-label="Training highlights">
+          <div className="quick-board-title">
+            <img src="/kmhr-logo-dark.png" alt="KMHR Logo" />
+            <div>
+              <strong>Learn. Code. Succeed.</strong>
+              <span>Mannampandal, Mayiladuthurai</span>
+            </div>
+          </div>
+          <div className="quick-grid">
+            {boardFeatures.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="home-section home-path-section">
         <div className="section-heading">
           <span>Training Method</span>

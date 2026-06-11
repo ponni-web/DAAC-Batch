@@ -11,6 +11,14 @@
   padding: 46px 24px;
   overflow: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: calc(100vh - 74px);
+  padding: 64px 24px 40px;
+  background:
+    radial-gradient(circle at 16% 16%, rgba(251, 146, 60, 0.20), transparent 32%),
+    radial-gradient(circle at 84% 10%, rgba(45, 212, 191, 0.16), transparent 30%),
+    linear-gradient(135deg, #101828 0%, #18212f 48%, #111827 100%);
+  color: #f8fafc;
+  font-family: "Segoe UI", "Inter", Arial, sans-serif;
 }
 
 .home-page.light {
@@ -574,5 +582,105 @@
   .path-grid,
   .feature-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-hero {
+    width: min(680px, 100%);
+    margin: 0 auto;
+  }
+}
+
+.quick-board {
+  border-radius: 8px;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.64);
+  border: 1px solid rgba(153, 246, 228, 0.22);
+  box-shadow: 0 28px 70px rgba(2, 6, 23, 0.28);
+}
+
+.home-page.light .quick-board {
+  background: rgba(255, 255, 255, 0.84);
+  border-color: rgba(15, 118, 110, 0.14);
+}
+
+.quick-board-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.quick-board-title img {
+  width: 64px;
+  height: auto;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.18));
+}
+
+.quick-board-title strong,
+.quick-board-title span {
+  display: block;
+}
+
+.quick-board-title strong {
+  color: #ffffff;
+  font-size: 1.12rem;
+}
+
+.home-page.light .quick-board-title strong {
+  color: #172554;
+}
+
+.quick-board-title span {
+  margin-top: 3px;
+  color: #cbd5e1;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.home-page.light .quick-board-title span {
+  color: #475569;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.quick-grid span {
+  min-height: 64px;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(17, 24, 39, 0.78);
+  border: 1px solid rgba(251, 146, 60, 0.16);
+  color: #f8fafc;
+  text-align: center;
+  font-size: 0.86rem;
+  font-weight: 800;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.quick-grid span:hover {
+  transform: translateY(-4px);
+  border-color: rgba(45, 212, 191, 0.58);
+  background: rgba(15, 118, 110, 0.28);
+}
+
+.home-page.light .quick-grid span {
+  background: #ffffff;
+  border-color: rgba(15, 118, 110, 0.14);
+  color: #172554;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+@media (max-width: 620px) {
+  .home-page {
+    padding: 40px 18px 28px;
+  }
+
+  .quick-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
