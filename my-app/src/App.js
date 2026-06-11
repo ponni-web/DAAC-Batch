@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
+import AboutUs from './components/AboutUs';
 
 function App() {
   const [activePage, setActivePage] = useState('home');
@@ -26,6 +27,10 @@ function App() {
 }
 
 function PageView({ page, darkMode }) {
+  if (page === 'about') {
+    return <AboutUs darkMode={darkMode} />;
+  }
+
   const pages = {
     home:         { team: 'Team 1', title: 'Home Page' },
     about:        { team: 'Team 2', title: 'About Us Page' },
