@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
+import HomePage from './components/HomePage';
 
 function App() {
   const [activePage, setActivePage] = useState('home');
@@ -19,15 +20,18 @@ function App() {
         setDarkMode={setDarkMode}
       />
       <main className="page-content">
-        <PageView page={activePage} darkMode={darkMode} />
+        <PageView page={activePage} darkMode={darkMode} setActivePage={setActivePage} />
       </main>
     </div>
   );
 }
 
-function PageView({ page, darkMode }) {
+function PageView({ page, darkMode, setActivePage }) {
+  if (page === 'home') {
+    return <HomePage darkMode={darkMode} setActivePage={setActivePage} />;
+  }
+
   const pages = {
-    home:         { team: 'Team 1', title: 'Home Page' },
     about:        { team: 'Team 2', title: 'About Us Page' },
     courses:      { team: 'Team 3', title: 'Courses Page' },
     contact:      { team: 'Team 4', title: 'Contact & Inquiry Form' },
