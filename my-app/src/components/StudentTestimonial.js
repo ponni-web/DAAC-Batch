@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './StudentTestimonial.css';
 
 const testimonials = [
@@ -193,11 +193,82 @@ const testimonials = [
   },
 ];
 
+const CARD_POSITIONS = ['far-left', 'left', 'center', 'right', 'far-right'];
+
+const carouselTestimonials = [
+  'Aswini',
+  'Subasri',
+  'Abirami',
+  'Sabi',
+  'Sandhiya',
+  'Abinaya',
+  'Jenciya',
+  'Ranjani',
+  'Aarthi',
+  'Prathipa',
+  'Aashika',
+  'Charumathi',
+  'Prithika',
+  'Sugartha',
+  'Sahana',
+  'Srimathi',
+  'Vinotha',
+  'Keerthana',
+  'Jeyaperathi',
+  'Jeeva Biruntha',
+  'Netra',
+  'Sharuthi',
+  'Sharmila',
+  'Dhanya',
+  'P. Mahalakshmi',
+  'R. Mahalakshmi',
+  'Atchayapriya',
+].map((name) => ({
+  name,
+  course: 'DAAC Student',
+  quote: 'The training was practical, clear, and helped me improve my technical confidence.',
+  avatar: name
+    .split(' ')
+    .map((part) => part[0])
+    .join('')
+    .replace('.', '')
+    .slice(0, 2)
+    .toUpperCase(),
+}));
+
 function StudentTestimonial({ darkMode }) {
+  const themeClass = darkMode ? 'dark' : 'light';
+  const [activeIndex, setActiveIndex] = useState(2);
+
+  const showPrevious = () => {
+    setActiveIndex((current) => (current === 0 ? carouselTestimonials.length - 1 : current - 1));
+  };
+
+  const showNext = () => {
+    setActiveIndex((current) => (current === carouselTestimonials.length - 1 ? 0 : current + 1));
+  };
+
+  const getCardPosition = (index) => {
+    let offset = (index - activeIndex + carouselTestimonials.length) % carouselTestimonials.length;
+
+    if (offset > carouselTestimonials.length / 2) {
+      offset -= carouselTestimonials.length;
+    }
+
+    if (offset < -2 || offset > 2) {
+      return 'hidden';
+    }
+
+    return CARD_POSITIONS[offset + 2];
+  };
+
+  const isVisibleCard = (index) => getCardPosition(index) !== 'hidden';
+  const activeStudent = carouselTestimonials[activeIndex];
+
   return (
     <section
       id="student-testimonials"
-      className={`student-testimonials ${darkMode ? 'dark' : 'light'}`}
+      className={`student-testimonials ${themeClass}`}
     >
 
       <div className="testimonial-shell">
@@ -229,6 +300,80 @@ function StudentTestimonial({ darkMode }) {
               <p className="testimonial-quote">"{testimonial.quote}"</p>
             </article>
           ))}
+        </div>
+
+        <div className={`student-testimonial-section ${themeClass}`}>
+          <div className="student-testimonial-inner">
+            <div className="student-carousel" aria-label="Student testimonials">
+              {carouselTestimonials.map((student, index) => {
+                const position = getCardPosition(index);
+
+                return (
+                  <button
+                    className={`student-testimonial-card ${position}`}
+                    key={student.name}
+                    type="button"
+                    onClick={() => setActiveIndex(index)}
+                    aria-hidden={!isVisibleCard(index)}
+                    aria-label={`Show testimonial from ${student.name}`}
+                  >
+                    <div className="quote-mark" aria-hidden="true">
+                      "
+                    </div>
+
+                    <div className="student-avatar" aria-hidden="true">
+                      {student.avatar}
+                    </div>
+
+                    <blockquote>
+                      <p>"{student.quote}"</p>
+                      <footer>
+                        - {student.name}, {student.course}
+                      </footer>
+                    </blockquote>
+
+                    <div className="student-rating" aria-label="5 star rating">
+                      *****
+                    </div>
+
+                    <div className="student-card-shine" aria-hidden="true" />
+                  </button>
+                );
+              })}
+
+              <button
+                className="student-carousel-arrow prev"
+                type="button"
+                aria-label="Previous testimonial"
+                onClick={showPrevious}
+              >
+                &lt;
+              </button>
+
+              <button
+                className="student-carousel-arrow next"
+                type="button"
+                aria-label="Next testimonial"
+                onClick={showNext}
+              >
+                &gt;
+              </button>
+            </div>
+
+            <p className="student-active-name">{activeStudent.name}</p>
+
+            <div className="student-carousel-dots" aria-label="Choose testimonial">
+              {carouselTestimonials.map((student, index) => (
+                <button
+                  className={activeIndex === index ? 'active' : ''}
+                  key={student.name}
+                  type="button"
+                  aria-label={`Show testimonial from ${student.name}`}
+                  onClick={() => setActiveIndex(index)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
