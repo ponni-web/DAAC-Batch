@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import ContactInquiryForm from './components/ContactInquiryForm';
 import AboutUs from './components/AboutUs';
+import InternshipWorkshop from './components/Intenship&Workshop';
 
 function App() {
   const [activePage, setActivePage] = useState('home');
@@ -34,6 +35,9 @@ function PageView({ page, darkMode }) {
 
   if (page === 'about') {
     return <AboutUs darkMode={darkMode} />;
+  }
+  if (page === 'internship') {
+    return <InternshipWorkshop darkMode={darkMode} />;
   }
 
   const pages = {
