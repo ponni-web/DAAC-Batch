@@ -8,11 +8,10 @@
   --kmhr-card: #ffffff;
   --kmhr-border: #dce8f4;
   min-height: calc(100vh - 74px);
-  padding: 46px 24px;
+  /* no horizontal padding — each section owns its own spacing */
+  padding: 0 0 60px;
   overflow: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
-  min-height: calc(100vh - 74px);
-  padding: 64px 24px 40px;
   background:
     radial-gradient(circle at 16% 16%, rgba(251, 146, 60, 0.20), transparent 32%),
     radial-gradient(circle at 84% 10%, rgba(45, 212, 191, 0.16), transparent 30%),
@@ -276,8 +275,8 @@
 }
 
 .home-section {
-  width: min(1180px, 100%);
-  margin: 46px auto 0;
+  width: min(1180px, calc(100% - 48px));
+  margin: 56px auto 0;
 }
 
 .section-heading {
@@ -544,7 +543,7 @@
 
 @media (max-width: 760px) {
   .home-page {
-    padding: 30px 18px;
+    padding: 0 0 40px;
   }
 
   .home-hero {
@@ -677,10 +676,442 @@
 
 @media (max-width: 620px) {
   .home-page {
-    padding: 40px 18px 28px;
+    padding: 0 0 28px;
   }
 
   .quick-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   NEW SECTIONS — merged from second design
+   ════════════════════════════════════════════════════════ */
+
+/* ── Hero ───────────────────────────────────────────────── */
+.kmhr-hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 74px);
+  padding: 80px clamp(28px, 6vw, 100px) 90px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: 52px;
+  box-sizing: border-box;
+  /* always dark — hero is designed for a dark canvas */
+  background:
+    radial-gradient(circle at 12% 12%, rgba(244, 122, 32, 0.2), transparent 28%),
+    radial-gradient(circle at 82% 4%, rgba(74, 144, 226, 0.28), transparent 30%),
+    linear-gradient(135deg, #040b19 0%, #071b3b 44%, #0f3264 100%);
+  color: #f8fbff;
+}
+
+.kmhr-hero::before {
+  content: "";
+  position: absolute;
+  inset: 122px -8% 28px;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle at 50% 42%, black, transparent 72%);
+}
+
+.code-rain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.code-rain span {
+  position: absolute;
+  color: rgba(199, 219, 255, 0.2);
+  font-family: Consolas, Monaco, monospace;
+  font-size: 0.9rem;
+}
+
+.code-rain span:nth-child(1) { top: 28%; left:   2%; }
+.code-rain span:nth-child(2) { top: 18%; right: 12%; }
+.code-rain span:nth-child(3) { bottom: 22%; left:  8%; }
+.code-rain span:nth-child(4) { bottom: 16%; right:  2%; }
+
+.hero-copy,
+.hero-visual {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 30px;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid rgba(244, 122, 32, 0.42);
+  border-radius: 999px;
+  color: #ffd5b2;
+  background: rgba(244, 122, 32, 0.13);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-copy h1 {
+  max-width: 700px;
+  margin: 18px 0 16px;
+  color: #ffffff;
+  font-size: clamp(2.8rem, 5.5vw, 5.8rem);
+  line-height: 0.96;
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: #ff9a3d;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 900;
+}
+
+.hero-text {
+  max-width: 620px;
+  margin: 20px 0 0;
+  color: #b8c9e7;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.course-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 28px 0 0;
+}
+
+.course-badges span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 7px;
+  color: #edf5ff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.primary-cta,
+.secondary-cta {
+  min-height: 52px;
+  padding: 0 28px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 900;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.primary-cta {
+  border: 0;
+  color: #121926;
+  background: linear-gradient(135deg, #ffb15d, #f47a20);
+  box-shadow: 0 16px 38px rgba(244, 122, 32, 0.32);
+}
+
+.primary-cta:hover {
+  box-shadow: 0 20px 44px rgba(244, 122, 32, 0.44);
+  transform: translateY(-2px);
+}
+
+.secondary-cta {
+  color: #f7fbff;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.secondary-cta:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-student-image {
+  width: min(520px, 100%);
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+/* ── Shared width container for new sections ─────────────── */
+.section-shell {
+  width: 100%;
+  padding: 80px clamp(28px, 6vw, 100px) 0;
+  box-sizing: border-box;
+}
+
+/* ── New section heading (.kmhr-sh avoids conflict) ──────── */
+.kmhr-sh {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  margin-bottom: 34px;
+  text-align: center;
+}
+
+.kmhr-sh.align-left {
+  justify-items: start;
+  text-align: left;
+}
+
+.kmhr-sh span {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 30px;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid rgba(244, 122, 32, 0.42);
+  border-radius: 999px;
+  color: #ffd5b2;
+  background: rgba(244, 122, 32, 0.13);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.kmhr-sh h2 {
+  max-width: 760px;
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.8rem, 2.8vw, 3rem);
+  line-height: 1.08;
+}
+
+/* light-mode overrides for new heading */
+.home-page.light .kmhr-sh span {
+  color: #c45000;
+  background: rgba(244, 122, 32, 0.1);
+  border-color: rgba(244, 122, 32, 0.3);
+}
+
+.home-page.light .kmhr-sh h2 {
+  color: #0d2b5e;
+}
+
+/* ── Why Choose — split section ──────────────────────────── */
+.split-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 42px;
+  align-items: start;
+}
+
+.pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.check-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 7px;
+  color: #edf5ff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.check-pill::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #f47a20;
+  box-shadow: 0 0 0 4px rgba(244, 122, 32, 0.14);
+}
+
+.home-page.light .check-pill {
+  color: #0d2b5e;
+  background: rgba(13, 43, 94, 0.06);
+  border-color: rgba(13, 43, 94, 0.14);
+}
+
+/* ── Learning cards ──────────────────────────────────────── */
+.learning-section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding: 80px clamp(28px, 6vw, 100px) 0;
+  box-sizing: border-box;
+}
+
+.learning-card {
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(18px);
+}
+
+.learning-card.orange-card {
+  background:
+    radial-gradient(circle at 90% 0%, rgba(244, 122, 32, 0.28), transparent 32%),
+    rgba(255, 255, 255, 0.07);
+}
+
+.home-page.light .learning-card {
+  background: #ffffff;
+  border-color: #dce8f4;
+  box-shadow: 0 20px 50px rgba(13, 71, 161, 0.1);
+}
+
+.home-page.light .learning-card.orange-card {
+  background:
+    radial-gradient(circle at 90% 0%, rgba(244, 122, 32, 0.1), transparent 32%),
+    #ffffff;
+}
+
+.mini-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mini-grid span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 7px;
+  color: #edf5ff;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.home-page.light .mini-grid span {
+  color: #0d2b5e;
+  background: rgba(13, 43, 94, 0.06);
+  border-color: rgba(13, 43, 94, 0.14);
+}
+
+/* ── Mission ─────────────────────────────────────────────── */
+.mission-section {
+  width: 100%;
+  margin: 80px 0 0;
+  padding: 56px clamp(28px, 6vw, 100px);
+  text-align: center;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px);
+}
+
+.mission-section > span {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 30px;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid rgba(244, 122, 32, 0.42);
+  border-radius: 999px;
+  color: #ffd5b2;
+  background: rgba(244, 122, 32, 0.13);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 auto 18px;
+}
+
+.mission-section p {
+  max-width: 900px;
+  margin: 0 auto;
+  color: #eef5ff;
+  font-size: clamp(1.3rem, 2.6vw, 2.2rem);
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.home-page.light .mission-section {
+  background: #ffffff;
+  border-color: #dce8f4;
+  box-shadow: 0 20px 50px rgba(13, 71, 161, 0.1);
+}
+
+.home-page.light .mission-section > span {
+  color: #c45000;
+  background: rgba(244, 122, 32, 0.1);
+  border-color: rgba(244, 122, 32, 0.3);
+}
+
+.home-page.light .mission-section p {
+  color: #0d2b5e;
+}
+
+/* ── New sections responsive ─────────────────────────────── */
+@media (max-width: 1040px) {
+  .kmhr-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+
+  .split-section {
+    grid-template-columns: 1fr;
+  }
+
+  .learning-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .primary-cta,
+  .secondary-cta {
+    width: 100%;
+    text-align: center;
+  }
+
+  .learning-card {
+    padding: 22px 18px;
+  }
+
+  .mission-section {
+    padding-top: 36px;
+    padding-bottom: 36px;
+    margin-top: 48px;
   }
 }
