@@ -40,7 +40,7 @@ function PageView({ page, darkMode, setActivePage }) {
     admin:        { team: 'Team 7', title: 'Admin Dashboard UI' },
   };
 
-  const current = pages[page];
+  const current = pages[page] || pages.about;
 
   if (!current) {
     return <HomePage darkMode={darkMode} setActivePage={setActivePage} />;
