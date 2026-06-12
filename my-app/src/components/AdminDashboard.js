@@ -9,8 +9,28 @@ function AdminDashboard({ darkMode }) {
     lng: '79.8833',
   });
 
-  const totalStudents = 30;
-  const gmailAccounts = 28;
+  const totalStudents = 27;
+  const gmailAccounts = 26;
+  const batches = [
+    { name: 'Batch 1', count: 13, teams: 7 },
+    { name: 'Batch 2', count: 14, teams: 7 },
+  ];
+  const teamStructure = [
+    { team: 'Team 1', batch: 'Batch 1', members: 2 },
+    { team: 'Team 2', batch: 'Batch 1', members: 2 },
+    { team: 'Team 3', batch: 'Batch 1', members: 2 },
+    { team: 'Team 4', batch: 'Batch 1', members: 2 },
+    { team: 'Team 5', batch: 'Batch 1', members: 2 },
+    { team: 'Team 6', batch: 'Batch 1', members: 2 },
+    { team: 'Team 7', batch: 'Batch 1', members: 1 },
+    { team: 'Team 1', batch: 'Batch 2', members: 2 },
+    { team: 'Team 2', batch: 'Batch 2', members: 2 },
+    { team: 'Team 3', batch: 'Batch 2', members: 2 },
+    { team: 'Team 4', batch: 'Batch 2', members: 2 },
+    { team: 'Team 5', batch: 'Batch 2', members: 2 },
+    { team: 'Team 6', batch: 'Batch 2', members: 2 },
+    { team: 'Team 7', batch: 'Batch 2', members: 2 },
+  ];
   const courseSections = ['React Basics', 'UI/UX Design', 'Node.js Essentials'];
   const courseOverview = [
     { name: 'React Basics', value: 18 },
@@ -18,10 +38,10 @@ function AdminDashboard({ darkMode }) {
     { name: 'Node.js Essentials', value: 8 },
   ];
   const recentActivity = [
-    { label: 'New enrollments', value: 14 },
-    { label: 'Completed lessons', value: 9 },
-    { label: 'Quiz attempts', value: 20 },
-    { label: 'Certificates issued', value: 5 },
+    { label: 'New enrollments', value: 27 },
+    { label: 'Completed lessons', value: 24 },
+    { label: 'Quiz attempts', value: 22 },
+    { label: 'Certificates - All Students', value: 27 },
   ];
 
   useEffect(() => {
@@ -72,7 +92,7 @@ function AdminDashboard({ darkMode }) {
         <div>
           <span className="section-label">Insight</span>
           <h1>Insight Dashboard</h1>
-          <p className="section-copy">A clean, frontend-only admin insight board with live time, course charts, and location preview.</p>
+          <p className="section-copy">Frontend-only dashboard. All data, charts, and location are generated and stored in the browser. No backend server involved.</p>
         </div>
         <div className="status-chip">
           <span>Local time</span>
@@ -90,43 +110,42 @@ function AdminDashboard({ darkMode }) {
           <strong>{gmailAccounts}</strong>
         </div>
         <div className="summary-card">
-          <span>Active Sections</span>
-          <strong>{courseSections.length}</strong>
+          <span>Total Batches</span>
+          <strong>{batches.length}</strong>
         </div>
         <div className="summary-card">
-          <span>Updated</span>
-          <strong>{formattedDate}</strong>
+          <span>Teams Per Batch</span>
+          <strong>7</strong>
         </div>
       </section>
 
       <section className="insight-grid">
         <div className="panel panel-wide">
           <div className="panel-heading">
-            <h2>Course Section</h2>
-            <span>Available sections in this insight page.</span>
+            <h2>Batch Distribution</h2>
+            <span>27 students split into 2 batches with 7 teams each.</span>
           </div>
-          <ul className="course-list">
-            {courseSections.map((section) => (
-              <li key={section}>{section}</li>
+          <div className="batch-list">
+            {batches.map((batch) => (
+              <div key={batch.name} className="batch-item">
+                <span className="batch-name">{batch.name}</span>
+                <span className="batch-count">{batch.count} students</span>
+                <span className="batch-teams">{batch.teams} teams</span>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
 
         <div className="panel panel-graph">
           <div className="panel-heading">
-            <h2>Graph Section</h2>
-            <span>Course overview by student count.</span>
+            <h2>Team Structure</h2>
+            <span>Teams distributed across 2 batches.</span>
           </div>
-          <div className="chart-list">
-            {courseOverview.map((item) => (
-              <div key={item.name} className="chart-item">
-                <div className="chart-item-label">
-                  <span>{item.name}</span>
-                  <strong>{item.value} students</strong>
-                </div>
-                <div className="chart-bar-wrap">
-                  <div className="chart-bar" style={{ width: `${item.value * 5}%` }} />
-                </div>
+          <div className="team-summary">
+            {batches.map((batch) => (
+              <div key={batch.name} className="team-batch">
+                <strong>{batch.name}: {batch.teams} Teams</strong>
+                <small>{batch.count} members</small>
               </div>
             ))}
           </div>
@@ -137,7 +156,7 @@ function AdminDashboard({ darkMode }) {
         <div className="panel panel-activity">
           <div className="panel-heading">
             <h2>Recent Activity</h2>
-            <span>Frontend-only metrics for insight overview.</span>
+            <span>Frontend mock data only - no backend.</span>
           </div>
           <div className="activity-list">
             {recentActivity.map((item) => (
@@ -152,7 +171,7 @@ function AdminDashboard({ darkMode }) {
         <div className="panel panel-map">
           <div className="panel-heading">
             <h2>Current Location</h2>
-            <span>{location.status}</span>
+            <span>Mannampandal, Tamil Nadu - displayed in browser only.</span>
           </div>
           <div className="location-grid">
             <div className="location-data">
