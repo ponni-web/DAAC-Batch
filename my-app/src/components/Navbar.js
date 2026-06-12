@@ -8,7 +8,7 @@ const NAV_ITEMS = [
   { id: 'contact',      label: 'Contact & Inquiry',      team: 'Team 4' },
   { id: 'testimonials', label: 'Testimonials',           team: 'Team 5' },
   { id: 'internship',   label: 'Internship & Workshop',  team: 'Team 6' },
-  { id: 'admin',        label: 'Admin Dashboard',        team: 'Team 7' },
+  { id: 'admin',        label: 'Insight',                team: 'Team 7' },
 ];
 
 // Strips the white background from a PNG/SVG at runtime using canvas pixel processing.
