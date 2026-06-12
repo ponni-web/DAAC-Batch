@@ -6,6 +6,7 @@ import AboutUs from './components/AboutUs';
 import InternshipWorkshop from './components/Intenship&Workshop';
 import StudentTestimonial from './components/StudentTestimonial';
 import AdminDashboard from './components/AdminDashboard';
+import CoursePage from './components/CoursePage';
 
 function App() {
   const [activePage, setActivePage] = useState('home');
@@ -49,11 +50,15 @@ function PageView({ page, darkMode }) {
   if (page === 'admin') {
     return <AdminDashboard darkMode={darkMode} />;
   }
+  if (page === 'courses') {
+    return <CoursePage />;
+  }
 
   const pages = {
     home:         { team: 'Team 1', title: 'Home Page' },
     about:        { team: 'Team 2', title: 'About Us Page' },
     courses:      { team: 'Team 3', title: 'Courses Page' },
+    contact:      { team: 'Team 4', title: 'Contact & Inquiry Form' },
     testimonials: { team: 'Team 5', title: 'Student Testimonial Section' },
     contact:      { team: 'Team 4', title: 'Contact & Inquiry Form' },
     internship:   { team: 'Team 6', title: 'Internship & Workshop Page' },
