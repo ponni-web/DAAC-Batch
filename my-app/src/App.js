@@ -7,6 +7,7 @@ import InternshipWorkshop from './components/Intenship&Workshop';
 import StudentTestimonial from './components/StudentTestimonial';
 import AdminDashboard from './components/AdminDashboard';
 import CoursePage from './components/CoursePage';
+import HomePage from './components/HomePage';
 
 function App() {
   const [activePage, setActivePage] = useState('home');
@@ -25,59 +26,22 @@ function App() {
         setDarkMode={setDarkMode}
       />
       <main className="page-content">
-        <PageView page={activePage} darkMode={darkMode} />
+        <PageView page={activePage} darkMode={darkMode} setActivePage={setActivePage} />
       </main>
     </div>
   );
 }
 
-function PageView({ page, darkMode }) {
-  if (page === 'contact') {
-    return <ContactInquiryForm darkMode={darkMode} />;
-  }
+function PageView({ page, darkMode, setActivePage }) {
+  if (page === 'home')         return <HomePage darkMode={darkMode} setActivePage={setActivePage} />;
+  if (page === 'contact')      return <ContactInquiryForm darkMode={darkMode} />;
+  if (page === 'about')        return <AboutUs darkMode={darkMode} />;
+  if (page === 'internship')   return <InternshipWorkshop darkMode={darkMode} />;
+  if (page === 'testimonials') return <StudentTestimonial darkMode={darkMode} />;
+  if (page === 'admin')        return <AdminDashboard darkMode={darkMode} />;
+  if (page === 'courses')      return <CoursePage darkMode={darkMode} />;
 
-  if (page === 'about') {
-    return <AboutUs darkMode={darkMode} />;
-  }
-  if (page === 'internship') {
-    return <InternshipWorkshop darkMode={darkMode} />;
-
-  }
-  if (page === 'testimonials') {
-    return <StudentTestimonial darkMode={darkMode} />;
-  }
-
-  if (page === 'admin') {
-    return <AdminDashboard darkMode={darkMode} />;
-  }
-  if (page === 'courses') {
-    return <CoursePage />;
-  }
-
-  const pages = {
-    home:         { team: 'Team 1', title: 'Home Page' },
-    about:        { team: 'Team 2', title: 'About Us Page' },
-    courses:      { team: 'Team 3', title: 'Courses Page' },
-    contact:      { team: 'Team 4', title: 'Contact & Inquiry Form' },
-    testimonials: { team: 'Team 5', title: 'Student Testimonial Section' },
-    contact:      { team: 'Team 4', title: 'Contact & Inquiry Form' },
-    internship:   { team: 'Team 6', title: 'Internship & Workshop Page' },
-  };
-
-  const current = pages[page];
-
-  return (
-    <div className={`placeholder-page ${darkMode ? 'dark' : 'light'}`}>
-      <div className="placeholder-card">
-        <span className="placeholder-team">{current.team}</span>
-        <h1 className="placeholder-title">{current.title}</h1>
-        <p className="placeholder-desc">
-          This section is being built by <strong>{current.team}</strong>.<br />
-          The component will be integrated here.
-        </p>
-      </div>
-    </div>
-  );
+  return <HomePage darkMode={darkMode} setActivePage={setActivePage} />;
 }
 
 export default App;
