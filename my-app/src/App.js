@@ -8,6 +8,7 @@ import StudentTestimonial from './components/StudentTestimonial';
 import AdminDashboard from './components/AdminDashboard';
 import CoursePage from './components/CoursePage';
 import HomePage from './components/HomePage';
+import AdminDashboard from './components/AdminDashboard';
 
 function App() {
   const [activePage, setActivePage] = useState('home');
@@ -42,6 +43,40 @@ function PageView({ page, darkMode, setActivePage }) {
   if (page === 'courses')      return <CoursePage darkMode={darkMode} />;
 
   return <HomePage darkMode={darkMode} setActivePage={setActivePage} />;
+  if (page === 'about') {
+    return <AboutUs darkMode={darkMode} />;
+  }
+  if (page === 'internship') {
+    return <InternshipWorkshop darkMode={darkMode} />;
+  }
+
+  if (page === 'admin') {
+    return <AdminDashboard darkMode={darkMode} />;
+  }
+
+  const pages = {
+    home:         { team: 'Team 1', title: 'Home Page' },
+    about:        { team: 'Team 2', title: 'About Us Page' },
+    courses:      { team: 'Team 3', title: 'Courses Page' },
+    testimonials: { team: 'Team 5', title: 'Student Testimonial Section' },
+    internship:   { team: 'Team 6', title: 'Internship & Workshop Page' },
+    admin:        { team: 'Team 7', title: 'Insight' },
+  };
+
+  const current = pages[page];
+
+  return (
+    <div className={`placeholder-page ${darkMode ? 'dark' : 'light'}`}>
+      <div className="placeholder-card">
+        <span className="placeholder-team">{current.team}</span>
+        <h1 className="placeholder-title">{current.title}</h1>
+        <p className="placeholder-desc">
+          This section is being built by <strong>{current.team}</strong>.<br />
+          The component will be integrated here.
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export default App;
