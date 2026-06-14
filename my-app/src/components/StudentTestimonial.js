@@ -157,7 +157,7 @@ const testimonials = [
     rating: '4.8',
   },
   {
-    name: 'M. Sharumathi',
+    name: 'M. Sharuthi',
     course: 'WordPress',
     quote:
       'I built a complete WordPress site during training and learned how to customize pages confidently.',
